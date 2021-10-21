@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchData } from '../redux/greetings/greetings.actions';
 
-class Greeting extends React.Component {
-  render () {
-    return (
-      <React.Fragment>
-        <h1> im a greeting</h1>
-      </React.Fragment>
-    );
-  }
+export default function Greeting() {
+  const { greetingsReducer } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchData());
+  }, []);
+  return (
+    <React.Fragment>
+      { greetingsReducer }
+    </React.Fragment>
+  );
 }
-
-export default Greeting

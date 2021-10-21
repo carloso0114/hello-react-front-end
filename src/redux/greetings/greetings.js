@@ -1,37 +1,16 @@
-import { GET_GREETINGS, GET_GREETINGS_SUCCESS, GET_GREETINGS_ERR } from "../slices/greetingsSlice";
+import FETCH_DATA from './greetings.types';
 
-const initialState = {
-  greetings: [
-    {
-      message: '',
-    }
-  ]
-};
+const initialData = [];
 
-const reducer = (state = initialState, action) => {
+const DataReducer = (state = initialData, action) => {
+
   switch (action.type) {
-    case GET_GREETINGS:
-      return { ...state, pending: true };
-    case GET_GREETINGS_SUCCESS:
-    {
-      const data = action.missions;
-      const subset = [];
-      data.forEach((mission) => {
-        subset.push(
-          {
-            mission_id: mission.mission_id,
-            mission_name: mission.mission_name,
-            description: mission.description,
-          },
-        );
-      });
-      return { ...state, pending: false, missions: subset };
+    case FETCH_DATA: {
+      return action.payload.greetings[0].message;
     }
-    case GET_GREETINGS_ERR:
-      return { ...state, pending: false, error: action.error };
     default:
       return state;
   }
 };
 
-export default reducer;
+export default DataReducer;
