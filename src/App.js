@@ -1,5 +1,7 @@
-import { BrowserRouter, Link, Route, Switch } from "react-router-dom"
-import Greeting from "./components/greeting.js"
+import {
+  BrowserRouter, Link, Route, Switch,
+} from 'react-router-dom';
+import Greeting from './components/greeting';
 
 function App() {
   return (

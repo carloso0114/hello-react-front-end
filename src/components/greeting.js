@@ -9,8 +9,8 @@ export default function Greeting() {
     dispatch(fetchData());
   }, []);
   return (
-    <React.Fragment>
+    <>
       { greetingsReducer }
-    </React.Fragment>
+    </>
   );
 }
